@@ -85,4 +85,4 @@ Read more about these methods [here](https://www.npmjs.com/)
 
 ### Notes
 ---
-This is my first back end projet and I am super happy with it. If I were to go back I would probably try to implement node geocoder to translate the coordinates into an address. It might be something that I come back to after the course is finished.
+This is my first back end project and I am super happy with it. If I were to go back I would probably try to implement node geocoder to translate the coordinates into an address. It might be something that I come back to after the course is finished.
