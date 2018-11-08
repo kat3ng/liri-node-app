@@ -100,23 +100,23 @@ function movieThis() {
 
     })
 };
-// function doThis() {
-// utilize the fs node package
-// take the text inside of random.txt and then use it to call one of LIRI's commands
-//     fs.readFile("random.txt", "utf8", function (error, data) {
-//         if (error) {
-//             return console.log(error);
-//         }
-//         var dataArr = data.split(",");
-//         console.log(dataArr);
+function doThis() {
+    // utilize the fs node package
+    // take the text inside of random.txt and then use it to call one of LIRI's commands
+    fs.readFile("random.txt", "utf8", function (error, data) {
+        if (error) {
+            return console.log(error);
+        }
+        var dataArr = data.split(",");
+        console.log(dataArr);
 
-//         // it should run a "spotify-this-song" for "I Want It That Way" as follows in the text in random.txt
-//         dataArr.forEach(function (song) { console.log(song) });
-//         // Edit the text in random.txt to test out the feature for movie - this and concert - this
-//     })
-//     console.log("DO THIS");
-// }
+        // it should run a "spotify-this-song" for "I Want It That Way" as follows in the text in random.txt
+        dataArr.forEach(function (song) { console.log(song) });
+        // Edit the text in random.txt to test out the feature for movie - this and concert - this
+    })
+    console.log("DO THIS");
+}
 // concertThis();
 // spotifyThis();
-// doThis();
+doThis();
 movieThis();
