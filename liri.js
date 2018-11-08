@@ -9,17 +9,23 @@ const fs = require("fs");
 // LINK KEY PAGE
 const keys = require("./keys.js");
 
-//INITIALIZE SPOTIFY
+// INITIALIZE SPOTIFY
 const Spotify = require("node-spotify-api");
 const spotify = new Spotify(keys.spotify);
 // console.log(spotify);
 
+// OMDB AND BANDS IN TOWN API'S
+let omdb = (keys.omdb);
+console.log(omdb);
+let bandsintown = (keys.bandsintown);
+console.log(bandsintown);
 
 // get the user input
-let input = process.argv[2];
+const userInput = process.argv[2];
+let userQuery = process.argv.slice(3).join(" ");
 
-// // make a decision based on the command
-// switch (input) {
+// make a decision based on the command
+// switch (userInput) {
 //     case "concert-this":
 //         concertThis();
 //         break;
@@ -37,6 +43,8 @@ let input = process.argv[2];
 //         break;
 // }
 
+// userCommand(userInput, userQuery);
+
 // function concertThis() {
 //     var queryUrl = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp"
 //     console.log("CONCERT THIS");
@@ -52,6 +60,9 @@ let input = process.argv[2];
 
 // function spotifyThisSong() {
 //     console.log("SPOTIFY THIS SONG");
+// if (!userQuery.length) {
+//     userQuery = "ace of base the sing"
+// };
 //     var queryUrl = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy";
 //     console.log(queryUrl);
 //     console.log("MOVIE THIS");
@@ -68,29 +79,30 @@ let input = process.argv[2];
 //         });
 // }
 
-// function movieThis() {
-//     var queryUrl = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=86fe999c";
-//     console.log(queryUrl);
-//     console.log("MOVIE THIS");
+function movieThis() {
+    // If no movie is given, the program will default ot 'Mr. Nobody'
+    if (!userQuery) {
+        userQuery = "mr nobody";
+    };
 
-//     //display movie title, year of release, IMDB rating, Rotten Tomatoes rating, Country of Origin, Languange, Plt and Actors in the movie. 
+    request("http://www.omdbapi.com/?t=" + userQuery + "&apikey=86fe999c", function (error, response, body) {
+        // Parse the response into a JSON format
+        let userMovie = JSON.parse(body);
+        // console.log(userMovie);
 
-//     // If no movie is given, the program will default ot 'Mr. Nobody'
+        // If the request is successful
+        if (error) {
+            return console.log("Movie not found :(" + error)
+        }
+        else {
+            console.log(`Title: ${userMovie.Title}\n Cast: ${userMovie.Actors}\n Released: ${userMovie.Year}\n IMDb Rating: ${userMovie.imdbRating}\n Rotten Tomato Rating: ${userMovie.rottentomato}\n Country: ${userMovie.Country}\n Language: ${userMovie.Language}\n Plot: ${userMovie.Plot}\n      `)
+        };
 
-//     //
-
-//     request(queryUrl, function (error, response, body) {
-
-//         // If the request is successful
-//         if (!error && response.statusCode === 200) {
-//             console.log("Release Year: " + JSON.parse(body).Year);
-//         }
-//     });
-// }
-
+    })
+};
 // function doThis() {
-    // utilize the fs node package
-    // take the text inside of random.txt and then use it to call one of LIRI's commands
+// utilize the fs node package
+// take the text inside of random.txt and then use it to call one of LIRI's commands
 //     fs.readFile("random.txt", "utf8", function (error, data) {
 //         if (error) {
 //             return console.log(error);
@@ -106,6 +118,5 @@ let input = process.argv[2];
 // }
 // concertThis();
 // spotifyThis();
-// movieThis();
 // doThis();
-
+movieThis();
