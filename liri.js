@@ -63,7 +63,7 @@ function concertThis() {
                 for (i = 0; i < 1; i++) {
 
                     // CONSOLE DESIRED DATA USING E6 SYNTAX
-                    console.log(`\nBA DA BOP!  That's for you...\n\nArtist: ${userBand[i].lineup[0]} \nVenue: ${userBand[i].venue.name}\nVenue Address: ${userBand[i].venue.city}, ${userBand[i].venue.country}`)
+                    console.log(`\nBA DA BOP!  That's for you...\n\nArtist: ${userBand[i].lineup[0]} \nVenue: ${userBand[i].venue.name}\nVenue Location: ${userBand[i].venue.latitude},${userBand[i].venue.longitude}\nVenue City: ${userBand[i].venue.city}, ${userBand[i].venue.country}`)
 
                     // MOMENT.JS TO FORMAT THE DATE MM/DD/YYYY
                     let concertDate = moment(userBand[i].datetime).format("MM/DD/YYYY hh:00 A");
