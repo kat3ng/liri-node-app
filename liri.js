@@ -106,7 +106,6 @@ function movieThis() {
         // BECAUSE THE ROTTEN TOMATOES RATING WAS NESTED IT WAS NECESSARY TO CAPTURE ITS VALUES IN AN ARRAY TO CREATE A PATH
         let ratingsArr = userMovie.Ratings;
         if (ratingsArr.length > 2) {
-            console.log("Rotten Tomatoes Rating: ", userMovie.Ratings[1].Value);
         }
 
         if (!error && response.statusCode === 200) {
