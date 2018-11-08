@@ -19,9 +19,8 @@ const spotify = new Spotify(keys.spotify);
 
 // OMDB AND BANDS IN TOWN API'S
 let omdb = (keys.omdb);
-// console.log(omdb);
 let bandsintown = (keys.bandsintown);
-// console.log(bandsintown);
+
 
 // TAKE USER COMMAND AND INPUT
 let userInput = process.argv[2];
