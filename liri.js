@@ -48,6 +48,7 @@ function userCommand(userInput, userQuery) {
             break;
     }
 }
+
 userCommand(userInput, userQuery);
 
 function concertThis() {
@@ -80,10 +81,16 @@ function spotifyThisSong() {
     console.log(`\n - - - - -\n\nSEARCHING FOR..."${userQuery}"`);
 
     // IF USER QUERY NOT FOUND, PASS VALUE OF "ACE OF BASE" 
-    if (!userQuery) { userQuery = "the sign ace of base" };
+    if (!userQuery) {
+        userQuery = "the sign ace of base"
+    };
 
     // SPOTIFY SEARCH QUERY FORMAT
-    spotify.search({ type: 'track', query: userQuery, limit: 1 }, function (error, data) {
+    spotify.search({
+        type: 'track',
+        query: userQuery,
+        limit: 1
+    }, function (error, data) {
         if (error) {
             return console.log('Error occurred: ' + error);
         }
@@ -98,15 +105,16 @@ function spotifyThisSong() {
 
 function movieThis() {
     console.log(`\n - - - - -\n\nSEARCHING FOR..."${userQuery}"`);
-    if (!userQuery) { userQuery = "mr nobody"; };
+    if (!userQuery) {
+        userQuery = "mr nobody";
+    };
     // REQUEST USING OMDB API
     request("http://www.omdbapi.com/?t=" + userQuery + "&apikey=86fe999c", function (error, response, body) {
         let userMovie = JSON.parse(body);
 
         // BECAUSE THE ROTTEN TOMATOES RATING WAS NESTED IT WAS NECESSARY TO CAPTURE ITS VALUES IN AN ARRAY TO CREATE A PATH
         let ratingsArr = userMovie.Ratings;
-        if (ratingsArr.length > 2) {
-        }
+        if (ratingsArr.length > 2) {}
 
         if (!error && response.statusCode === 200) {
             console.log(`\nBA DA BOP!  That's for you...\n\nTitle: ${userMovie.Title}\nCast: ${userMovie.Actors}\nReleased: ${userMovie.Year}\nIMDb Rating: ${userMovie.imdbRating}\nRotten Tomatoes Rating: ${userMovie.Ratings[1].Value}\nCountry: ${userMovie.Country}\nLanguage: ${userMovie.Language}\nPlot: ${userMovie.Plot}\n\n- - - - -`)
@@ -119,7 +127,9 @@ function movieThis() {
 function doThis() {
     // UTILIZE THE BUILT IN READFILE METHOD TO ACCESS RANDOM.TXT
     fs.readFile("random.txt", "utf8", function (error, data) {
-        if (error) { return console.log(error); }
+        if (error) {
+            return console.log(error);
+        }
         // CATCH DATA AND USE THE .SPLIT() METHOD TO SEPARATE OBJECTS WITHIN OUR NEW ARRAY
         let dataArr = data.split(",");
 
