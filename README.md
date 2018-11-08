@@ -22,11 +22,13 @@ do-this | uses the built in **readFile()** method to access data from a prepopul
 
 
 ### Functionality
---- concert-this
+--- 
+1. concert-this
+
 2. spotify-this
 3. movie-this
 4. do-this
-1.
+
 
 
 ### Notes
